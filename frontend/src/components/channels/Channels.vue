@@ -16,13 +16,13 @@
       <ChannelNames :Range="proxy.CHANNEL_RANGE" />
     </div>
     <div class="content-area">
-      <PatternManager />
+      <Displays />
     </div>
   </div>
 </template>
 
 <script setup>
-import PatternManager from "./Displays.vue";
+import Displays from "./Displays.vue";
 import ChannelNames from "./ChannelNames.vue";
 import { getCurrentInstance } from "vue";
 const { proxy } = getCurrentInstance();

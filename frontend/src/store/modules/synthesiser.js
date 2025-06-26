@@ -49,6 +49,15 @@ export default {
         sustain: 0.5,
         release: 0.01,
       },
+      {
+        preset: "noise",
+        n_poly: 1,
+        be_modulated: true,
+        attack: 0,
+        decay: 0.01,
+        sustain: 0.5,
+        release: 0.01,
+      },
     ],
   }),
   mutations: {

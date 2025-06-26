@@ -32,12 +32,15 @@
         @mousedown.left="startResizeDisplay(display, $event)"
       ></div>
     </div>
-    <my-grid :n_rows="5" :h_rows="50" ref="gridEl" />
+    <my-grid :n_rows="proxy.CHANNEL_RANGE" :h_rows="50" ref="gridEl" />
   </div>
 </template>
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, getCurrentInstance } from "vue";
 import { useStore, mapState } from "vuex";
+const { proxy } = getCurrentInstance();
+
+const n_channels=proxy.CHANNEL_RANGE;
 
 const store = useStore();
 const displays = computed(() => store.state.display.data);
@@ -80,6 +83,7 @@ const handleCanvasMouseLeftDown = (e) => {
 };
 
 const handleCanvasMouseMove = (e) => {
+
   if (!dragState) return;
   // 改变display持续时间
   if (dragState.type === "resize") {
@@ -158,7 +162,7 @@ const moveDisplay = (e) => {
   let newChannel = dragState.originalPos.channel + dy;
 
   newStarttime = Math.max(0, newStarttime);
-  newChannel = Math.max(0, Math.min(4, newChannel));
+  newChannel = Math.max(0, Math.min(proxy.CHANNEL_RANGE - 1, newChannel));
 
   store.dispatch("display/updatePosition", {
     id: dragState.displayId,

@@ -78,6 +78,16 @@ export default createStore({
 
       const channelParams = state.channel.params;
       const synthParams = state.synthesiser.params;
+      // channelParams.push({ name: "noise", volume: 0.2, pan: 0 },);
+      // synthParams.push({
+      //   preset: "noise",
+      //   n_poly: 1,
+      //   be_modulated: true,
+      //   attack: 0,
+      //   decay: 0.01,
+      //   sustain: 0.5,
+      //   release: 0.01,
+      // },);
 
       console.log("init wasm song with channels", channelParams.length);
       console.log("synth params length", synthParams[0]); // Ensure matching lengths
@@ -168,7 +178,7 @@ export default createStore({
         note.starttime,
         note.starttime + note.duration,
       );
-      state.wasm_song.reload_and_play();
+      // state.wasm_song.reload_and_play();
       state.notes.push(note);
     },
     deleteNote(state, note) {
@@ -178,7 +188,7 @@ export default createStore({
         note.starttime,
         note.starttime + note.duration,
       );
-      state.wasm_song.reload_and_play();
+      // state.wasm_song.reload_and_play();
       state.notes = state.notes.filter((n) => n.id !== note.id);
     },
     updateNotePosition(state, { id, starttime, pitch }) {
@@ -196,7 +206,7 @@ export default createStore({
           starttime,
           starttime + note.duration,
         );
-        state.wasm_song.reload_and_play();
+        // state.wasm_song.reload_and_play();
         note.pitch = pitch;
         note.starttime = starttime;
       }
@@ -220,7 +230,7 @@ export default createStore({
           note.starttime,
           note.starttime + duration,
         );
-        state.wasm_song.reload_and_play();
+        // state.wasm_song.reload_and_play();
         note.duration = duration;
       }
     },

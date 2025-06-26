@@ -84,7 +84,7 @@ const actions = {
         starttime
       );
       rootState.wasm_song.sort_display();
-      rootState.wasm_song.reload_and_play();
+      // rootState.wasm_song.reload_and_play();
     }
   },
   updateDuration({ commit, rootState }, { id, duration }) {
@@ -98,7 +98,7 @@ const actions = {
         display.starttime,
         duration
       );
-      rootState.wasm_song.reload_and_play();
+      // rootState.wasm_song.reload_and_play();
     }
   }
 };
